@@ -37,6 +37,6 @@ setup(
     license="MIT",
     # use entry_points if exporting scripts
     entry_points={
-        "console_scripts": ["rendermd=rendermd.generate_toc:main"],
+        "console_scripts": ["rendermd=rendermd.command_line:main"],
     },
 )
