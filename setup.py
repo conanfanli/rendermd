@@ -23,7 +23,7 @@ setup(
     include_package_data=True,
     python_requires="~=3.8",
     install_requires=[
-        "pyyaml",
+        "md-toc",
     ],
     extras_require={"dev": ["ipython", "mypy"]},
     classifiers=[
@@ -36,7 +36,7 @@ setup(
     author_email="conanlics@gmail.com",
     license="MIT",
     # use entry_points if exporting scripts
-    # entry_points={
-    #     "console_scripts": ["rendermd=some_module:main"],
-    # },
+    entry_points={
+        "console_scripts": ["rendermd=rendermd.generate_toc:main"],
+    },
 )

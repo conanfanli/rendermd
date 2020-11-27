@@ -13,3 +13,4 @@ black
 pyyaml
 
 m2r
+md-toc
