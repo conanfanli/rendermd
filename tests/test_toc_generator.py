@@ -1,18 +1,19 @@
 import tempfile
 import unittest
 
-from rendermd.toc import generate_markdown_toc
+from rendermd.toc import TocGenerator
 
 TOC_BLOCK = ("[//]: # (START_TOC)", "[//]: # (END_TOC)")
 
 
 class TocTest(unittest.TestCase):
     def test_toc_generator(self) -> None:
+        g = TocGenerator()
         with tempfile.NamedTemporaryFile() as fp:
 
-            original_content = """
-[//]: # (START_TOC)
-[//]: # (END_TOC)
+            original_content = f"""
+{g.block_start}
+{g.block_end}
 
 # h1
 
@@ -22,19 +23,18 @@ class TocTest(unittest.TestCase):
             fp.write(original_content.encode("utf-8"))
             fp.seek(0)
 
-            new_content, diff = generate_markdown_toc(
+            new_content, diff = g.generate_content(
                 original_content.splitlines(), fp.name
             )
             assert (
                 new_content.splitlines()
-                == """
-[//]: # (START_TOC)
+                == f"""
+{g.block_start}
 Table of Contents
 =================
 - [h1](#h1)
     - [h2](#h2)
-
-[//]: # (END_TOC)
+{g.block_end}
 
 # h1
 

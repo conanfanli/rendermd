@@ -2,12 +2,8 @@
 
 Add docs here
 
-[//]: # (START_TOC)
-Table of Contents
-=================
-- [rendermd](#rendermd)
-
-[//]: # (END_TOC)
+<!--start:toc-->
+<!--end-->
 
 [//]: # (rendermd.shell.start`python -m rendermd.command_line --help`)
 usage: command_line.py [-h] [-p PATTERNS] [--no-recursive]
