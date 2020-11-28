@@ -7,7 +7,7 @@ from .core import Diff, MarkdownGenerator
 
 
 class TocGenerator(MarkdownGenerator):
-    block_start = "<!--start:toc-->"
+    block_start = "[//]: # (start:toc)"
 
     def generate_content(
         self, original_lines: List[str], file_path: str

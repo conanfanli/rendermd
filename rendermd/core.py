@@ -6,7 +6,7 @@ Diff = NewType("Diff", List[str])
 
 class MarkdownGenerator:
     block_start: ClassVar[Union[str, re.Pattern]]
-    block_end: Final = "<!--end-->"
+    block_end: Final = "[//]: # (end)"
 
     def generate_content(
         self, original_lines: List[str], file_path: str
