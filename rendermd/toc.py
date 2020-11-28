@@ -21,7 +21,9 @@ def get_toc(file_path: str) -> str:
     )
 
 
-def generate_markdown_toc(original_lines: List[str]) -> Tuple[str, Diff]:
+def generate_markdown_toc(
+    original_lines: List[str], file_path: str
+) -> Tuple[str, Diff]:
     """Given a markdown file, generate table of contents.
 
     Returns:
@@ -34,7 +36,7 @@ def generate_markdown_toc(original_lines: List[str]) -> Tuple[str, Diff]:
     inside_toc_block = False
     contains_toc = False
 
-    for line in infile.readlines():
+    for line in original_lines:
         line = line.rstrip("\n")
 
         if line.startswith(start):
