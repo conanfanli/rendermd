@@ -40,9 +40,10 @@ class ShellGenerator(MarkdownGenerator):
                 inside_toc_block = True
                 contains_toc = True
                 resulted_lines += (
-                    [line] + get_command_output(command).splitlines() + [self.block_end]
+                    [line] + get_command_output(command).splitlines() + [""]
                 )
             elif inside_toc_block and line.startswith(self.block_end):
+                resulted_lines.append(self.block_end)
                 inside_toc_block = False
                 continue
 

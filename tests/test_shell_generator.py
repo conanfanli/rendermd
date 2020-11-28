@@ -16,5 +16,6 @@ class ShellTest(unittest.TestCase):
             == f"""
 [//]: # (start:shell`echo success`)
 success
+
 {g.block_end}""".splitlines()
         )
