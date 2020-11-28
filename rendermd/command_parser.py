@@ -11,7 +11,7 @@ class CommandLineOptions:
 
 def get_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Populate Table of Contents in markdown files."
+        prog="rendermd", description="Populate Table of Contents in markdown files."
     )
     parser.add_argument(
         "-p",
