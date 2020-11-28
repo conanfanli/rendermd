@@ -13,6 +13,7 @@ Render markdown templates.
 
 # Usage
 [//]: # (start:shell`python -m rendermd.command_line --help`)
+```
 usage: rendermd [-h] [-p PATTERNS] [--no-recursive]
 
 Render markdown templates.
@@ -22,5 +23,6 @@ optional arguments:
   -p PATTERNS, --pattern PATTERNS
                         Comma separated list of markdown files to populate
   --no-recursive        Do not search for files recursively
+```
 
 [//]: # (end)

@@ -3,7 +3,8 @@ Table of Contents
 =================
 
 
-* `rendermd <#rendermd>`_
+* `renderme <#renderme>`_
+* `Usage <#usage>`_
 
 renderme
 ========
@@ -13,14 +14,12 @@ Render markdown templates.
 Usage
 =====
 
-.. code-block::
+usage: rendermd [-h] [-p PATTERNS] [--no-recursive]
 
-   usage: rendermd [-h] [-p PATTERNS] [--no-recursive]
+Render markdown templates.
 
-   Populate Table of Contents in markdown files.
-
-   optional arguments:
-     -h, --help            show this help message and exit
-     -p PATTERNS, --pattern PATTERNS
-                           Comma separated list of markdown files to populate
-     --no-recursive        Do not search for files recursively
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PATTERNS, --pattern PATTERNS
+                        Comma separated list of markdown files to populate
+  --no-recursive        Do not search for files recursively
