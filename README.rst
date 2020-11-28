@@ -4,6 +4,12 @@ rendermd
 
 Add docs here
 
+Table of Contents
+=================
+
+
+* `rendermd <#rendermd>`_
+
 usage: command_line.py [-h] [-p PATTERNS] [--no-recursive]
 
 Populate Table of Contents in markdown files.

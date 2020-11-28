@@ -3,9 +3,16 @@ from typing import List, Tuple
 
 import md_toc
 
-from .printer import Diff
+from .core import Diff, MarkdownGenerator
 
 TOC_BLOCK = ("[//]: # (START_TOC)", "[//]: # (END_TOC)")
+
+
+class TocGenerator(MarkdownGenerator):
+    def generate_content(
+        self, original_lines: List[str], file_path: str
+    ) -> Tuple[str, Diff]:
+        return generate_markdown_toc(original_lines, file_path)
 
 
 def get_toc(file_path: str) -> str:
