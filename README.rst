@@ -8,6 +8,9 @@ Add docs here
 .. raw:: html
 
    <!--start:toc-->
+   Table of Contents
+   =================
+   - [rendermd](#rendermd)
    <!--end-->
 
 
