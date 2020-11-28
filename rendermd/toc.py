@@ -8,7 +8,6 @@ from .core import Diff, MarkdownGenerator
 
 class TocGenerator(MarkdownGenerator):
     block_start = "<!--start:toc-->"
-    block_end = "<!--end-->"
 
     def generate_content(
         self, original_lines: List[str], file_path: str
@@ -29,7 +28,6 @@ class TocGenerator(MarkdownGenerator):
             if line.startswith(self.block_start):
                 inside_toc_block = True
                 contains_toc = True
-                # resulted_lines += get_toc(file_path).splitlines()
 
                 resulted_lines += (
                     [line] + self.get_toc(file_path).splitlines() + [self.block_end]

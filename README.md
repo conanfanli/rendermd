@@ -3,6 +3,9 @@
 Add docs here
 
 <!--start:toc-->
+Table of Contents
+=================
+- [rendermd](#rendermd)
 <!--end-->
 
 [//]: # (rendermd.shell.start`python -m rendermd.command_line --help`)

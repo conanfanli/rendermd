@@ -1,19 +1,20 @@
 import unittest
 
-from rendermd.shell import generate_markdown
+from rendermd.shell import ShellGenerator
 
 
 class ShellTest(unittest.TestCase):
     def test_shell_generator(self) -> None:
-        original_content = """
-[//]: # (rendermd.shell.start`echo success`)
-[//]: # (rendermd.end)
+        g = ShellGenerator()
+        original_content = f"""
+<!--start:shell`echo success`-->
+{g.block_end}
 """
-        new_content, diff = generate_markdown(original_content.splitlines())
+        new_content, diff = g.generate_content(original_content.splitlines())
         assert (
             new_content.splitlines()
-            == """
-[//]: # (rendermd.shell.start`echo success`)
+            == f"""
+<!--start:shell`echo success`-->
 success
-[//]: # (rendermd.end)""".splitlines()
+{g.block_end}""".splitlines()
         )

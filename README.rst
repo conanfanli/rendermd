@@ -4,11 +4,13 @@ rendermd
 
 Add docs here
 
-Table of Contents
-=================
+
+.. raw:: html
+
+   <!--start:toc-->
+   <!--end-->
 
 
-* `rendermd <#rendermd>`_
 
 usage: command_line.py [-h] [-p PATTERNS] [--no-recursive]
 

@@ -5,9 +5,6 @@ from typing import List, Tuple
 
 from .core import Diff, MarkdownGenerator
 
-SHELL_START = re.compile(r"\[//\]: # \(rendermd.shell.start`(.+)`\)")
-SHELL_END = "[//]: # (rendermd.end)"
-
 
 def get_command_output(command: str) -> str:
     """Return command output wrapped in block."""
@@ -20,44 +17,43 @@ def get_command_output(command: str) -> str:
 
 
 class ShellGenerator(MarkdownGenerator):
+    block_start = re.compile(r"<!--start:shell`(.+)`-->")
+
     def generate_content(
-        self, original_lines: List[str], file_path: str
+        self, original_lines: List[str], file_path: str = None
     ) -> Tuple[str, Diff]:
-        return generate_markdown(original_lines)
+        """Given a markdown file, generate table of contents.
 
+        Returns:
+            (content, diff)
+        """
+        resulted_lines = []
 
-#     )
-def generate_markdown(original_lines: List[str]) -> Tuple[str, Diff]:
-    """Given a markdown file, generate table of contents.
+        inside_toc_block = False
+        contains_toc = False
 
-    Returns:
-        (content, diff)
-    """
-    resulted_lines = []
+        for line in original_lines:
+            line = line.rstrip("\n")
 
-    inside_toc_block = False
-    contains_toc = False
+            if line.startswith("<!--start:shell") and (
+                match := self.block_start.match(line)
+            ):
+                command = match.group(1)
+                inside_toc_block = True
+                contains_toc = True
+                resulted_lines += (
+                    [line] + get_command_output(command).splitlines() + [self.block_end]
+                )
+            elif line.startswith(self.block_end):
+                inside_toc_block = False
+                continue
 
-    for line in original_lines:
-        line = line.rstrip("\n")
+            if not inside_toc_block:
+                resulted_lines.append(line)
 
-        if line.startswith("[//]") and (match := SHELL_START.match(line)):
-            command = match.group(1)
-            inside_toc_block = True
-            contains_toc = True
-            resulted_lines += (
-                [line] + get_command_output(command).splitlines() + [SHELL_END]
-            )
-        elif line.startswith(SHELL_END):
-            inside_toc_block = False
-            continue
-
-        if not inside_toc_block:
-            resulted_lines.append(line)
-
-    return (
-        "\n".join(resulted_lines),
-        contains_toc
-        and Diff(list(difflib.context_diff(original_lines, resulted_lines)))
-        or Diff([]),
-    )
+        return (
+            "\n".join(resulted_lines),
+            contains_toc
+            and Diff(list(difflib.context_diff(original_lines, resulted_lines)))
+            or Diff([]),
+        )
