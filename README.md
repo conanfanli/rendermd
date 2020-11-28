@@ -1,6 +1,3 @@
-# rendermd
-
-Add docs here
 
 [//]: # (start:toc)
 Table of Contents
@@ -9,6 +6,11 @@ Table of Contents
 
 [//]: # (end)
 
+# renderme
+
+Render markdown templates.
+
+# Usage
 [//]: # (start:shell`python -m rendermd.command_line --help`)
 ```
 usage: rendermd [-h] [-p PATTERNS] [--no-recursive]
