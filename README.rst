@@ -4,28 +4,18 @@ rendermd
 
 Add docs here
 
-
-.. raw:: html
-
-   <!--start:toc-->
-   Table of Contents
-   =================
-   - [rendermd](#rendermd)
-   <!--end-->
+Table of Contents
+=================
 
 
+* `rendermd <#rendermd>`_
 
+usage: command_line.py [-h] [-p PATTERNS] [--no-recursive]
 
-.. raw:: html
+Populate Table of Contents in markdown files.
 
-   <!--start:shell"python -m rendermd.command_line \-\-help"-->
-   usage: command_line.py [-h] [-p PATTERNS] [--no-recursive]
-
-   Populate Table of Contents in markdown files.
-
-     -p PATTERNS, --pattern PATTERNS
-                           Comma separated list of markdown files to populate
-     --no-recursive        Do not search for files recursively
-   [//]: # (rendermd.end)
-   <!--end-->
-
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PATTERNS, --pattern PATTERNS
+                        Comma separated list of markdown files to populate
+  --no-recursive        Do not search for files recursively
