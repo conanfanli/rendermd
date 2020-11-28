@@ -15,7 +15,10 @@ def get_mardown_files(patterns: List[str], recursive: bool) -> List[str]:
 
 
 def rewrite_markdown(file_path: str) -> None:
-    file_content, diff = generate_markdown_toc(file_path)
+    # file_content, diff = generate_markdown_toc(file_path)
+    from .shell import generate_markdown
+
+    file_content, diff = generate_markdown(file_path)
     if diff:
         print(f"Generating {file_path} ...")
         Printer.print_colored_diff(diff)
