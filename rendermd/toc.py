@@ -32,7 +32,7 @@ class TocGenerator(MarkdownGenerator):
                 resulted_lines += (
                     [line] + self.get_toc(file_path).splitlines() + [self.block_end]
                 )
-            elif line.startswith(self.block_end):
+            elif inside_toc_block and line.startswith(self.block_end):
                 inside_toc_block = False
                 continue
 

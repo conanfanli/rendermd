@@ -17,7 +17,8 @@ def get_command_output(command: str) -> str:
 
 
 class ShellGenerator(MarkdownGenerator):
-    block_start = re.compile(r"<!--start:shell`(.+)`-->")
+
+    block_start = re.compile(r"\[//\]: # \(start:shell`(.+)`\)")
 
     def generate_content(
         self, original_lines: List[str], file_path: str = None
@@ -35,16 +36,14 @@ class ShellGenerator(MarkdownGenerator):
         for line in original_lines:
             line = line.rstrip("\n")
 
-            if line.startswith("<!--start:shell") and (
-                match := self.block_start.match(line)
-            ):
+            if line.startswith("[//]") and (match := self.block_start.match(line)):
                 command = match.group(1)
                 inside_toc_block = True
                 contains_toc = True
                 resulted_lines += (
                     [line] + get_command_output(command).splitlines() + [self.block_end]
                 )
-            elif line.startswith(self.block_end):
+            elif inside_toc_block and line.startswith(self.block_end):
                 inside_toc_block = False
                 continue
 
