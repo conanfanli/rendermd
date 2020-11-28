@@ -1,11 +1,18 @@
 import difflib
-from typing import Tuple
+from typing import List, Tuple
 
 import md_toc
 
-from .printer import Diff
+from .core import Diff, MarkdownGenerator
 
 TOC_BLOCK = ("[//]: # (START_TOC)", "[//]: # (END_TOC)")
+
+
+class TocGenerator(MarkdownGenerator):
+    def generate_content(
+        self, original_lines: List[str], file_path: str
+    ) -> Tuple[str, Diff]:
+        return generate_markdown_toc(original_lines, file_path)
 
 
 def get_toc(file_path: str) -> str:
@@ -21,35 +28,34 @@ def get_toc(file_path: str) -> str:
     )
 
 
-def generate_markdown_toc(file_path: str) -> Tuple[str, Diff]:
+def generate_markdown_toc(
+    original_lines: List[str], file_path: str
+) -> Tuple[str, Diff]:
     """Given a markdown file, generate table of contents.
 
     Returns:
         (content, diff)
     """
-    with open(file_path) as infile:
-        original_lines = []
-        resulted_lines = []
+    resulted_lines = []
 
-        start, end = TOC_BLOCK
+    start, end = TOC_BLOCK
 
-        inside_toc_block = False
-        contains_toc = False
+    inside_toc_block = False
+    contains_toc = False
 
-        for line in infile.readlines():
-            line = line.rstrip("\n")
-            original_lines.append(line)
+    for line in original_lines:
+        line = line.rstrip("\n")
 
-            if line.startswith(start):
-                inside_toc_block = True
-                contains_toc = True
-                resulted_lines += get_toc(file_path).splitlines()
-            elif line.startswith(end):
-                inside_toc_block = False
-                continue
+        if line.startswith(start):
+            inside_toc_block = True
+            contains_toc = True
+            resulted_lines += get_toc(file_path).splitlines()
+        elif line.startswith(end):
+            inside_toc_block = False
+            continue
 
-            if not inside_toc_block:
-                resulted_lines.append(line)
+        if not inside_toc_block:
+            resulted_lines.append(line)
 
     return (
         "\n".join(resulted_lines),

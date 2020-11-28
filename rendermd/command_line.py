@@ -3,7 +3,10 @@ from typing import List
 
 from .command_parser import parse_command_line
 from .printer import Printer
-from .toc import generate_markdown_toc
+from .shell import ShellGenerator
+from .toc import TocGenerator
+
+GENERATORS = [TocGenerator(), ShellGenerator()]
 
 
 def get_mardown_files(patterns: List[str], recursive: bool) -> List[str]:
@@ -15,13 +18,20 @@ def get_mardown_files(patterns: List[str], recursive: bool) -> List[str]:
 
 
 def rewrite_markdown(file_path: str) -> None:
-    file_content, diff = generate_markdown_toc(file_path)
-    if diff:
-        print(f"Generating {file_path} ...")
-        Printer.print_colored_diff(diff)
+    with open(file_path) as infile:
+        file_content = infile.read()
 
-        with open(file_path, "w") as outfile:
-            print(file_content, file=outfile)
+    for gen in GENERATORS:
+        lines = [line.rstrip("\n") for line in file_content.splitlines()]
+
+        file_content, diff = gen.generate_content(lines, file_path)
+
+        if diff:
+            print(f"{gen.__class__.__name__} working on {file_path} ...")
+            Printer.print_colored_diff(diff)
+
+    with open(file_path, "w") as outfile:
+        print(file_content, file=outfile)
 
 
 def main() -> None:
@@ -29,7 +39,7 @@ def main() -> None:
     for markdown_file in get_mardown_files(opts.patterns, opts.recursive):
         rewrite_markdown(markdown_file)
 
-    print(f"{__file__} done!")
+    print("rendermd is done!")
 
 
 if __name__ == "__main__":

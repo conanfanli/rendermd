@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List, NewType
 
-Diff = NewType("Diff", List[str])
+from .core import Diff
 
 
 class Printer(Enum):
