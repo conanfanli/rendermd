@@ -1,14 +1,17 @@
 
-rendermd
-========
-
-Add docs here
-
 Table of Contents
 =================
 
 
 * `rendermd <#rendermd>`_
+
+renderme
+========
+
+Render markdown templates.
+
+Usage
+=====
 
 .. code-block::
 
