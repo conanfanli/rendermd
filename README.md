@@ -6,10 +6,11 @@ Add docs here
 Table of Contents
 =================
 - [rendermd](#rendermd)
+
 [//]: # (end)
 
 [//]: # (start:shell`python -m rendermd.command_line --help`)
-usage: command_line.py [-h] [-p PATTERNS] [--no-recursive]
+usage: rendermd [-h] [-p PATTERNS] [--no-recursive]
 
 Populate Table of Contents in markdown files.
 
@@ -18,4 +19,5 @@ optional arguments:
   -p PATTERNS, --pattern PATTERNS
                         Comma separated list of markdown files to populate
   --no-recursive        Do not search for files recursively
+
 [//]: # (end)

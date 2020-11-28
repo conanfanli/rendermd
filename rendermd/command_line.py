@@ -22,7 +22,7 @@ def rewrite_markdown(file_path: str) -> None:
         file_content = infile.read()
 
     for gen in GENERATORS:
-        lines = [line.rstrip("\n") for line in file_content.splitlines()]
+        lines = [line for line in file_content.splitlines()]
 
         file_content, diff = gen.generate_content(lines, file_path)
 

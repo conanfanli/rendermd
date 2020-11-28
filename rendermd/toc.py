@@ -23,7 +23,6 @@ class TocGenerator(MarkdownGenerator):
         contains_toc = False
 
         for line in original_lines:
-            line = line.rstrip("\n")
 
             if line.startswith(self.block_start):
                 inside_toc_block = True

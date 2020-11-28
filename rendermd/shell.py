@@ -34,7 +34,6 @@ class ShellGenerator(MarkdownGenerator):
         contains_toc = False
 
         for line in original_lines:
-            line = line.rstrip("\n")
 
             if line.startswith("[//]") and (match := self.block_start.match(line)):
                 command = match.group(1)
