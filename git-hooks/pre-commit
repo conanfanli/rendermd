@@ -1,2 +1,2 @@
-#!/bin/sh
-m2r README.md --overwrite
+#!/bin/bash
+make pre-commit

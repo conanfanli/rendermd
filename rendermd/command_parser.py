@@ -11,7 +11,13 @@ class CommandLineOptions:
 
 def get_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="rendermd", description="Render markdown templates."
+        prog="rendermd",
+        description="""Render markdown templates.
+
+This command recursively search the current directly and find all markdown files
+by matching given patterns (default to "**/README.md").
+
+        """,
     )
     parser.add_argument(
         "-p",

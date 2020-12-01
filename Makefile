@@ -41,3 +41,8 @@ lint:
 check-version-bump:
 	./check_version_bump.sh
 
+
+.PHONY: pre-commit
+pre-commit: generate-stubs
+	python -m rendermd.command_line
+	m2r README.md --overwrite

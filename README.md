@@ -16,7 +16,9 @@ Render markdown templates.
 ```
 usage: rendermd [-h] [-p PATTERNS] [--no-recursive]
 
-Render markdown templates.
+Render markdown templates. This command recursively search the current
+directly and find all markdown files by matching given patterns (default to
+"**/README.md").
 
 optional arguments:
   -h, --help            show this help message and exit
