@@ -3,8 +3,6 @@ import unittest
 
 from rendermd.toc import TocGenerator
 
-TOC_BLOCK = ("[//]: # (START_TOC)", "[//]: # (END_TOC)")
-
 
 class TocTest(unittest.TestCase):
     def test_toc_generator(self) -> None:

@@ -28,3 +28,49 @@ optional arguments:
 ```
 
 [//]: # (end)
+
+
+# Examples
+
+## Inject Table of Contents
+
+Before running `rendermd`.
+```markdown
+[//]: # (start_toc)
+[//]: # (end)
+
+# h1
+
+## h2
+```
+
+After running `rendermd`.
+```markdown
+[//]: # (start_toc)
+Table of Contents
+=================
+- [h1](#h1)
+    - [h2](#h2)
+
+[//]: # (end)
+
+# h1
+
+## h2
+```
+
+## Inject output of shell commands
+
+Before running `rendermd`.
+```markdown
+[//]: # (start:shell`echo success`)
+[//]: # (end)
+```
+
+After running `rendermd`.
+```markdown
+[//]: # (start:shell`echo success`)
+success
+
+[//]: # (end)
+```
