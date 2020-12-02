@@ -4,6 +4,7 @@ Table of Contents
 
 
 * `renderme <#renderme>`_
+* `Installation <#installation>`_
 * `Usage <#usage>`_
 
   * `Examples: <#examples>`_
@@ -11,7 +12,12 @@ Table of Contents
 renderme
 ========
 
-Render markdown templates.
+Render markdown templates by injecting table of contents and shell command output.
+
+Installation
+============
+
+``pip install renderme``
 
 Usage
 =====

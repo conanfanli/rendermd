@@ -3,6 +3,7 @@
 Table of Contents
 =================
 - [renderme](#renderme)
+- [Installation](#installation)
 - [Usage](#usage)
     - [Examples:](#examples)
 
@@ -10,7 +11,11 @@ Table of Contents
 
 # renderme
 
-Render markdown templates.
+Render markdown templates by injecting table of contents and shell command output.
+
+# Installation
+
+`pip install renderme`
 
 # Usage
 [//]: # (start:shell`python -m rendermd.command_line --help`)
