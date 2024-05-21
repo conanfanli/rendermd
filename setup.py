@@ -21,7 +21,7 @@ setup(
     url="https://github.com/conanfanli/rendermd",
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
-    python_requires="~=3.8",
+    python_requires="~=3.11",
     install_requires=[
         "md-toc",
     ],
