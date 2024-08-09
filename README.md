@@ -40,5 +40,5 @@ optional arguments:
 ## Examples:
 
 - `[//]: # (start:toc)` and `[//]: # (end)` will produce table of contents.
-- `[//]: # (start:shell`echo abc`)` and `[//] # (end)` will produce `abc` (the output of the shell command `echo abc`.
+- `[//]: # (start:shell\`echo abc\`)` and `[//]: # (end)` will produce `abc` (the output of the shell command `echo abc`.
 - More examples can be found in [test_toc_generator.py](./tests/test_toc_generator.py) and [test_shell_generator.py](./tests/test_shell_generator.py)
