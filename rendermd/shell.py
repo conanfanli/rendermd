@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from .core import Diff, MarkdownGenerator
 
-WRAP_CODE_BLOCK = int(getenv("WRAP_CODE_BLOCK", "0"))
+WRAP_CODE_BLOCK = int(getenv("WRAP_CODE_BLOCK", "1"))
 
 
 def get_command_output(command: str) -> str:
